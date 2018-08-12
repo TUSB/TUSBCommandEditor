@@ -29,7 +29,7 @@ namespace TUSBCommandEditorUpdater
 
                 Console.WriteLine("いらないファイルを削除しています");
                 File.Delete(@"NewVer\dll\ICSharpCode.SharpZipLib.dll");
-                File.Delete(@"NewVer\HaruEditorUpdater.exe");
+                File.Delete(@"NewVer\TUSBCommandEditorUpdater.exe");
 
                 Console.WriteLine("ファイルを上書きしています");
                 Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory("NewVer",
@@ -41,8 +41,8 @@ namespace TUSBCommandEditorUpdater
                 Directory.Delete("NewVer", true);
                 File.Delete("NewVer.Zip");
                 Console.WriteLine("アップデートが完了しました");
-                Console.WriteLine("ハルの総合コマンドエディタを起動します");
-                Process.Start("ハルの総合コマンドエディタ.exe");
+                Console.WriteLine("TUSBの総合コマンドエディタを起動します");
+                Process.Start("TUSBCommandEditor.exe");
                 Console.WriteLine("本ソフトを終了します");
             }
             catch(Exception ex)
