@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HaruCommandEditor.Give
+namespace TUSBCommandEditor.Give
 {
     public partial class GiveControl : UserControl
     {

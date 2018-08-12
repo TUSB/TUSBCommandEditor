@@ -39,6 +39,15 @@
       <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="OrangeNBT">
+      <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\OrangeNBT.dll</HintPath>
+    </Reference>
+    <Reference Include="OrangeNBT.Data">
+      <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\OrangeNBT.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="OrangeNBT.World">
+      <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\OrangeNBT.World.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

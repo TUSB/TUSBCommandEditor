@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaruCommandEditor", "HaruCommandEditor\HaruCommandEditor.csproj", "{2E345C85-5779-4EC7-B8EE-1423EB4802CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TUSBCommandEditor", "TUSBCommandEditor\TUSBCommandEditor.csproj", "{2E345C85-5779-4EC7-B8EE-1423EB4802CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaruEditorUpdater", "HaruEditorUpdater\HaruEditorUpdater.csproj", "{D13402F4-B37E-4789-BF45-32031871F50C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TUSBCommandEditorUpdater", "TUSBCommandEditorUpdater\TUSBCommandEditorUpdater.csproj", "{D13402F4-B37E-4789-BF45-32031871F50C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

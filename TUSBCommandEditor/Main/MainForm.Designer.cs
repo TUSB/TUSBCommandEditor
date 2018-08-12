@@ -1,4 +1,4 @@
-﻿namespace HaruCommandEditor.Main
+﻿namespace TUSBCommandEditor.Main
 {
     partial class MainForm
     {

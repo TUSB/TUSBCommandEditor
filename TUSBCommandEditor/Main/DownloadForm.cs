@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HaruCommandEditor.Main
+namespace TUSBCommandEditor.Main
 {
     public partial class DownloadForm : Form
     {

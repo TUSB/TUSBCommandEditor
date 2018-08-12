@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HaruCommandEditor.Properties
+namespace TUSBCommandEditor.Properties
 {
 
 

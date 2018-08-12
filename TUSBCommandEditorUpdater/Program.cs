@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace HaruEditorUpdater
+namespace TUSBCommandEditorUpdater
 {
     class Program
     {
