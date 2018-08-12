@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaruCommandEditor", "HaruCommandEditor\HaruCommandEditor.csproj", "{2E345C85-5779-4EC7-B8EE-1423EB4802CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaruEditorUpdater", "HaruEditorUpdater\HaruEditorUpdater.csproj", "{D13402F4-B37E-4789-BF45-32031871F50C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2E345C85-5779-4EC7-B8EE-1423EB4802CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E345C85-5779-4EC7-B8EE-1423EB4802CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E345C85-5779-4EC7-B8EE-1423EB4802CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D13402F4-B37E-4789-BF45-32031871F50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13402F4-B37E-4789-BF45-32031871F50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13402F4-B37E-4789-BF45-32031871F50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13402F4-B37E-4789-BF45-32031871F50C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
