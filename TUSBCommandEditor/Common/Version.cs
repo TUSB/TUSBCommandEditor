@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TUSBCommandEditor.Common
@@ -59,11 +55,11 @@ namespace TUSBCommandEditor.Common
                     if (result == DialogResult.Yes)
                     {
                         using (var f = new Main.DownloadForm("https://skyblock.jp/dl/harueditorupdater/",
-                            Application.StartupPath + @"\HaruEditorUpdater.exe"))
+                            Application.StartupPath + @"\TUSBCommandEditorUpdater.exe"))
                         {
                             if (f.ShowDialog() == DialogResult.OK)
                             {
-                                Process.Start(Application.StartupPath + @"\HaruEditorUpdater.exe");
+                                Process.Start(Application.StartupPath + @"\TUSBCommandEditorUpdater.exe");
                                 Application.Exit();
                             }
                         }
