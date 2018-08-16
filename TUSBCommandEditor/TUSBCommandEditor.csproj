@@ -36,17 +36,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>bin\Debug\dll\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="OrangeNBT">
-      <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\OrangeNBT.dll</HintPath>
+      <HintPath>bin\Debug\dll\OrangeNBT.dll</HintPath>
     </Reference>
     <Reference Include="OrangeNBT.Data">
-      <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\OrangeNBT.Data.dll</HintPath>
+      <HintPath>bin\Debug\dll\OrangeNBT.Data.dll</HintPath>
     </Reference>
     <Reference Include="OrangeNBT.World">
-      <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\OrangeNBT.World.dll</HintPath>
+      <HintPath>bin\Debug\dll\OrangeNBT.World.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,6 +71,10 @@
     <Compile Include="Give\GiveControl.Designer.cs">
       <DependentUpon>GiveControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Json\JsonMake.cs" />
+    <Compile Include="Json\JsonMake.Designer.cs">
+      <DependentUpon>JsonMake.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\DownloadForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +92,9 @@
     <EmbeddedResource Include="Give\GiveControl.resx">
       <DependentUpon>GiveControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Json\JsonMake.resx">
+      <DependentUpon>JsonMake.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\DownloadForm.resx">
       <DependentUpon>DownloadForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +110,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
