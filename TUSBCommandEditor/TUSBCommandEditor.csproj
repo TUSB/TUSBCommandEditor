@@ -71,7 +71,9 @@
     <Compile Include="Give\GiveControl.Designer.cs">
       <DependentUpon>GiveControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Json\JsonMake.cs" />
+    <Compile Include="Json\JsonMake.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Json\JsonMake.Designer.cs">
       <DependentUpon>JsonMake.cs</DependentUpon>
     </Compile>
