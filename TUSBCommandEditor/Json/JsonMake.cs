@@ -11,39 +11,6 @@ using Newtonsoft.Json;
 
 namespace HaruCommandEditor.Json
 {
-    public class JsonData
-    {
-        public class Score
-        {
-            public string name { get; set; }
-            public string objective { get; set; }
-        }
-        public class ClickEvent
-        {
-            public string action { get; set; }
-            public string value { get; set; }
-        }
-        public class HoverEvent
-        {
-            public string action { get; set; }
-            public string value { get; set; }
-        }
-        public string text { get; set; }
-        public string selector { get; set; }
-        public Score score { get; set; }
-        public string translate { get; set; }
-        public List<JsonData> with { get; set; }
-        public string keybind { get; set; }
-        public string color { get; set; }
-        public bool? bold { get; set; }
-        public bool? italic { get; set; }
-        public bool? underlined { get; set; }
-        public bool? strikethrough { get; set; }
-        public bool? obfuscated { get; set; }
-        public ClickEvent clickEvent { get; set; }
-        public HoverEvent hoverEvent { get; set; }
-    }
-
     public partial class JsonMake : Form
     {
         private Dictionary<string, Color> ColorList = new Dictionary<string, Color>();
@@ -54,10 +21,38 @@ namespace HaruCommandEditor.Json
             InitializeComponent();
         }
 
+        private int StyleToNumber(bool? style)
+        {
+            return style == null ? 0 : (bool)style ? 1 : 2;
+        }
+
+        private void ItemAllClear()
+        {
+            TextValue.Clear();
+            Selector.Clear();
+            ScoreSelector.Clear();
+            ScoreScoreboard.Clear();
+            TranslateText.Clear();
+            TranslateWith.Clear();
+            TranslateWithList.Items.Clear();
+            Keybind.Clear();
+            ColorSelect.SelectedIndex = 0;
+            Bold.SelectedIndex = 0;
+            Italic.SelectedIndex = 0;
+            Underlined.SelectedIndex = 0;
+            Strikethrough.SelectedIndex = 0;
+            Obfuscated.SelectedIndex = 0;
+            ClickAction.SelectedIndex = 0;
+            ClickValue.Clear();
+            HoverAction.SelectedIndex = 0;
+            HoverValue.Clear();
+            return;
+        }
+
         private void JsonMake_Load(object sender, EventArgs e)
         {
             JSON = "";
-            if(!ColorList.TryGetValue("black",out var tmp))
+            if (!ColorList.TryGetValue("black", out var tmp))
             {
                 ColorList.Add("black", Color.FromArgb(0, 0, 0));
                 ColorList.Add("dark_blue", Color.FromArgb(0, 0, 170));
@@ -81,12 +76,11 @@ namespace HaruCommandEditor.Json
         private void Preview_Show()
         {
             Preview.Clear();
-            Color text_color = Preview.ForeColor;
+            Color color = Preview.ForeColor;
             bool bold = false;
             bool italic = false;
             bool underlined = false;
             bool strikethrough = false;
-            bool obfuscated = false;
             foreach (var item in ListJsonItems.Items)
             {
                 var Item = JsonConvert.DeserializeObject<JsonData>(item.ToString());
@@ -114,10 +108,37 @@ namespace HaruCommandEditor.Json
 
                 if (Item.color != null)
                 {
-                    text_color = Item.color == "reset" ? Preview.ForeColor : ColorList[Item.color];
+                    color = Item.color == "reset" ? Preview.ForeColor : ColorList[Item.color];
+                }
+                if (Item.bold != null) bold = (bool)Item.bold;
+                if (Item.italic != null) italic = (bool)Item.italic;
+                if (Item.underlined != null) underlined = (bool)Item.underlined;
+                if (Item.strikethrough != null) strikethrough = (bool)Item.strikethrough;
+
+
+                Preview.Select(Preview.Text.Length, 0);
+                Font baseFont = Preview.SelectionFont;
+                Preview.Text += add_text;
+                Preview.SelectionLength = add_text.Length;
+
+                Preview.SelectionColor = color;
+
+                FontStyle style = baseFont.Style;
+                if (bold) style = style | FontStyle.Bold;
+                if (italic) style = style | FontStyle.Italic;
+                if (underlined) style = style | FontStyle.Underline;
+                if (strikethrough) style = style | FontStyle.Strikeout;
+
+                if (style != baseFont.Style)
+                {
+                    Font fnt = new Font(baseFont.FontFamily, baseFont.Size, style);
+                    Preview.SelectionFont = fnt;
+                    fnt.Dispose();
                 }
 
+                baseFont.Dispose();
             }
+            Preview.Select(0, 0);
             return;
         }
 
@@ -171,6 +192,8 @@ namespace HaruCommandEditor.Json
                 Item.hoverEvent.value = HoverValue.Text;
             }
             ListJsonItems.Items.Add(JsonConvert.SerializeObject(Item));
+
+            Preview_Show();
         }
 
         private void ColorSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -241,5 +264,136 @@ namespace HaruCommandEditor.Json
                 Preview.BackColor = PreviewBGColorSet.Color;
             }
         }
+
+        private void ItemClear_Click(object sender, EventArgs e)
+        {
+            ItemAllClear();
+        }
+
+        private void ListItemUp_Click(object sender, EventArgs e)
+        {
+            if (ListJsonItems.SelectedIndex > 0)
+            {
+                int index = ListJsonItems.SelectedIndex;
+                var tmp = ListJsonItems.Items[index];
+                ListJsonItems.Items[index] = ListJsonItems.Items[index - 1];
+                ListJsonItems.Items[index - 1] = tmp;
+            }
+        }
+
+        private void ListItemDown_Click(object sender, EventArgs e)
+        {
+            if (ListJsonItems.SelectedIndex > -1 && ListJsonItems.SelectedIndex < ListJsonItems.Items.Count)
+            {
+                int index = ListJsonItems.SelectedIndex;
+                var tmp = ListJsonItems.Items[index];
+                ListJsonItems.Items[index] = ListJsonItems.Items[index + 1];
+                ListJsonItems.Items[index + 1] = tmp;
+            }
+        }
+
+        private void ListRemove_Click(object sender, EventArgs e)
+        {
+            if (ListJsonItems.SelectedIndex > -1) ListJsonItems.Items.RemoveAt(ListJsonItems.SelectedIndex);
+        }
+
+        private void ListClear_Click(object sender, EventArgs e)
+        {
+            ListJsonItems.Items.Clear();
+        }
+
+        private void ListResetting_Click(object sender, EventArgs e)
+        {
+            if (ListJsonItems.SelectedIndex > -1)
+            {
+                ItemAllClear();
+                var Item = JsonConvert.DeserializeObject<JsonData>(ListJsonItems.Items[ListJsonItems.SelectedIndex].ToString());
+                if (Item.text != null) { TabSetting.SelectedIndex = 0; TextValue.Text = Item.text; }
+                if (Item.selector != null) { TabSetting.SelectedIndex = 1; Selector.Text = Item.selector; }
+                if (Item.score != null) { TabSetting.SelectedIndex = 2; ScoreSelector.Text = Item.score.name; ScoreScoreboard.Text = Item.score.objective; }
+                if (Item.translate != null)
+                {
+                    TabSetting.SelectedIndex = 3;
+                    TranslateText.Text = Item.translate;
+                    foreach (var with in Item.with) TranslateWithList.Items.Add(with.ToString());
+                }
+                if (Item.keybind != null) { TabSetting.SelectedIndex = 4; Keybind.Text = Item.keybind; }
+                switch (Item.color)
+                {
+                    case null: ColorSelect.SelectedIndex = 0; break;
+                    case "reset": ColorSelect.SelectedIndex = 1; break;
+                    case "black": ColorSelect.SelectedIndex = 2; break;
+                    case "dark_blue": ColorSelect.SelectedIndex = 3; break;
+                    case "dark_green": ColorSelect.SelectedIndex = 4; break;
+                    case "dark_aqua": ColorSelect.SelectedIndex = 5; break;
+                    case "dark_red": ColorSelect.SelectedIndex = 6; break;
+                    case "dark_purple": ColorSelect.SelectedIndex = 7; break;
+                    case "gold": ColorSelect.SelectedIndex = 8; break;
+                    case "gray": ColorSelect.SelectedIndex = 9; break;
+                    case "dark_gray": ColorSelect.SelectedIndex = 10; break;
+                    case "blue": ColorSelect.SelectedIndex = 11; break;
+                    case "green": ColorSelect.SelectedIndex = 12; break;
+                    case "aqua": ColorSelect.SelectedIndex = 13; break;
+                    case "red": ColorSelect.SelectedIndex = 14; break;
+                    case "light_purple": ColorSelect.SelectedIndex = 15; break;
+                    case "yellow": ColorSelect.SelectedIndex = 16; break;
+                    case "white": ColorSelect.SelectedIndex = 17; break;
+                }
+                Bold.SelectedIndex = StyleToNumber(Item.bold);
+                Italic.SelectedIndex = StyleToNumber(Item.italic);
+                Underlined.SelectedIndex = StyleToNumber(Item.underlined);
+                Strikethrough.SelectedIndex = StyleToNumber(Item.strikethrough);
+                Obfuscated.SelectedIndex = StyleToNumber(Item.obfuscated);
+                switch (Item.clickEvent.action)
+                {
+                    case "open_url": ClickAction.SelectedIndex = 1; break;
+                    case "run_command": ClickAction.SelectedIndex = 2; break;
+                    case "change_page": ClickAction.SelectedIndex = 3; break;
+                    case "suggest_command": ClickAction.SelectedIndex = 4; break;
+                }
+                ClickValue.Text = Item.clickEvent.value ?? "";
+                switch (Item.hoverEvent.action)
+                {
+                    case "show_text": HoverAction.SelectedIndex = 1; break;
+                    case "show_item": HoverAction.SelectedIndex = 2; break;
+                    case "show_entity": HoverAction.SelectedIndex = 3; break;
+                }
+                HoverValue.Text = Item.hoverEvent.value ?? "";
+            }
+        }
     }
+
+    public class JsonData
+    {
+        public class Score
+        {
+            public string name { get; set; }
+            public string objective { get; set; }
+        }
+        public class ClickEvent
+        {
+            public string action { get; set; }
+            public string value { get; set; }
+        }
+        public class HoverEvent
+        {
+            public string action { get; set; }
+            public string value { get; set; }
+        }
+        public string text { get; set; }
+        public string selector { get; set; }
+        public Score score { get; set; }
+        public string translate { get; set; }
+        public List<JsonData> with { get; set; }
+        public string keybind { get; set; }
+        public string color { get; set; }
+        public bool? bold { get; set; }
+        public bool? italic { get; set; }
+        public bool? underlined { get; set; }
+        public bool? strikethrough { get; set; }
+        public bool? obfuscated { get; set; }
+        public ClickEvent clickEvent { get; set; }
+        public HoverEvent hoverEvent { get; set; }
+    }
+
 }

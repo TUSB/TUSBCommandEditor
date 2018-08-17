@@ -33,6 +33,16 @@
             this.PreviewResetColor = new System.Windows.Forms.Button();
             this.PreviewBGColor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Obfuscated = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.Strikethrough = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.Underlined = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.Italic = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.Bold = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.ClickEvent = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -89,16 +99,6 @@
             this.Cancel = new System.Windows.Forms.Button();
             this.PreviewResetColorSet = new System.Windows.Forms.ColorDialog();
             this.PreviewBGColorSet = new System.Windows.Forms.ColorDialog();
-            this.label15 = new System.Windows.Forms.Label();
-            this.Bold = new System.Windows.Forms.ComboBox();
-            this.Italic = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.Underlined = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.Strikethrough = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.Obfuscated = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.ClickEvent.SuspendLayout();
@@ -182,6 +182,116 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "要素設定";
+            // 
+            // Obfuscated
+            // 
+            this.Obfuscated.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Obfuscated.FormattingEnabled = true;
+            this.Obfuscated.Items.AddRange(new object[] {
+            "-",
+            "T",
+            "F"});
+            this.Obfuscated.Location = new System.Drawing.Point(198, 221);
+            this.Obfuscated.Name = "Obfuscated";
+            this.Obfuscated.Size = new System.Drawing.Size(35, 20);
+            this.Obfuscated.TabIndex = 22;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(141, 224);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 12);
+            this.label19.TabIndex = 21;
+            this.label19.Text = "難読化";
+            // 
+            // Strikethrough
+            // 
+            this.Strikethrough.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Strikethrough.FormattingEnabled = true;
+            this.Strikethrough.Items.AddRange(new object[] {
+            "-",
+            "T",
+            "F"});
+            this.Strikethrough.Location = new System.Drawing.Point(73, 221);
+            this.Strikethrough.Name = "Strikethrough";
+            this.Strikethrough.Size = new System.Drawing.Size(35, 20);
+            this.Strikethrough.TabIndex = 20;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(9, 224);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(59, 12);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "打ち消し線";
+            // 
+            // Underlined
+            // 
+            this.Underlined.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Underlined.FormattingEnabled = true;
+            this.Underlined.Items.AddRange(new object[] {
+            "-",
+            "T",
+            "F"});
+            this.Underlined.Location = new System.Drawing.Point(310, 195);
+            this.Underlined.Name = "Underlined";
+            this.Underlined.Size = new System.Drawing.Size(35, 20);
+            this.Underlined.TabIndex = 18;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(260, 198);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(29, 12);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "下線";
+            // 
+            // Italic
+            // 
+            this.Italic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Italic.FormattingEnabled = true;
+            this.Italic.Items.AddRange(new object[] {
+            "-",
+            "T",
+            "F"});
+            this.Italic.Location = new System.Drawing.Point(198, 195);
+            this.Italic.Name = "Italic";
+            this.Italic.Size = new System.Drawing.Size(35, 20);
+            this.Italic.TabIndex = 16;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(141, 198);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(29, 12);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "斜体";
+            // 
+            // Bold
+            // 
+            this.Bold.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Bold.FormattingEnabled = true;
+            this.Bold.Items.AddRange(new object[] {
+            "-",
+            "T",
+            "F"});
+            this.Bold.Location = new System.Drawing.Point(73, 195);
+            this.Bold.Name = "Bold";
+            this.Bold.Size = new System.Drawing.Size(35, 20);
+            this.Bold.TabIndex = 14;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(9, 198);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(29, 12);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "太字";
             // 
             // ClickEvent
             // 
@@ -318,6 +428,7 @@
             this.ItemClear.TabIndex = 10;
             this.ItemClear.Text = "リセット";
             this.ItemClear.UseVisualStyleBackColor = true;
+            this.ItemClear.Click += new System.EventHandler(this.ItemClear_Click);
             // 
             // ListAdd
             // 
@@ -687,6 +798,7 @@
             this.ListClear.TabIndex = 6;
             this.ListClear.Text = "全削除";
             this.ListClear.UseVisualStyleBackColor = true;
+            this.ListClear.Click += new System.EventHandler(this.ListClear_Click);
             // 
             // ListResetting
             // 
@@ -696,6 +808,7 @@
             this.ListResetting.TabIndex = 4;
             this.ListResetting.Text = "再設定";
             this.ListResetting.UseVisualStyleBackColor = true;
+            this.ListResetting.Click += new System.EventHandler(this.ListResetting_Click);
             // 
             // ListRemove
             // 
@@ -705,6 +818,7 @@
             this.ListRemove.TabIndex = 3;
             this.ListRemove.Text = "削除";
             this.ListRemove.UseVisualStyleBackColor = true;
+            this.ListRemove.Click += new System.EventHandler(this.ListRemove_Click);
             // 
             // ListItemDown
             // 
@@ -714,6 +828,7 @@
             this.ListItemDown.TabIndex = 2;
             this.ListItemDown.Text = "↓";
             this.ListItemDown.UseVisualStyleBackColor = true;
+            this.ListItemDown.Click += new System.EventHandler(this.ListItemDown_Click);
             // 
             // ListItemUp
             // 
@@ -723,6 +838,7 @@
             this.ListItemUp.TabIndex = 1;
             this.ListItemUp.Text = "↑";
             this.ListItemUp.UseVisualStyleBackColor = true;
+            this.ListItemUp.Click += new System.EventHandler(this.ListItemUp_Click);
             // 
             // ListJsonItems
             // 
@@ -753,116 +869,6 @@
             this.Cancel.TabIndex = 5;
             this.Cancel.Text = "キャンセル";
             this.Cancel.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 198);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(29, 12);
-            this.label15.TabIndex = 13;
-            this.label15.Text = "太字";
-            // 
-            // Bold
-            // 
-            this.Bold.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Bold.FormattingEnabled = true;
-            this.Bold.Items.AddRange(new object[] {
-            "-",
-            "T",
-            "F"});
-            this.Bold.Location = new System.Drawing.Point(73, 195);
-            this.Bold.Name = "Bold";
-            this.Bold.Size = new System.Drawing.Size(35, 20);
-            this.Bold.TabIndex = 14;
-            // 
-            // Italic
-            // 
-            this.Italic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Italic.FormattingEnabled = true;
-            this.Italic.Items.AddRange(new object[] {
-            "-",
-            "T",
-            "F"});
-            this.Italic.Location = new System.Drawing.Point(198, 195);
-            this.Italic.Name = "Italic";
-            this.Italic.Size = new System.Drawing.Size(35, 20);
-            this.Italic.TabIndex = 16;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(141, 198);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(29, 12);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "斜体";
-            // 
-            // Underlined
-            // 
-            this.Underlined.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Underlined.FormattingEnabled = true;
-            this.Underlined.Items.AddRange(new object[] {
-            "-",
-            "T",
-            "F"});
-            this.Underlined.Location = new System.Drawing.Point(310, 195);
-            this.Underlined.Name = "Underlined";
-            this.Underlined.Size = new System.Drawing.Size(35, 20);
-            this.Underlined.TabIndex = 18;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(260, 198);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(29, 12);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "下線";
-            // 
-            // Strikethrough
-            // 
-            this.Strikethrough.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Strikethrough.FormattingEnabled = true;
-            this.Strikethrough.Items.AddRange(new object[] {
-            "-",
-            "T",
-            "F"});
-            this.Strikethrough.Location = new System.Drawing.Point(73, 221);
-            this.Strikethrough.Name = "Strikethrough";
-            this.Strikethrough.Size = new System.Drawing.Size(35, 20);
-            this.Strikethrough.TabIndex = 20;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(9, 224);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(59, 12);
-            this.label18.TabIndex = 19;
-            this.label18.Text = "打ち消し線";
-            // 
-            // Obfuscated
-            // 
-            this.Obfuscated.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Obfuscated.FormattingEnabled = true;
-            this.Obfuscated.Items.AddRange(new object[] {
-            "-",
-            "T",
-            "F"});
-            this.Obfuscated.Location = new System.Drawing.Point(198, 221);
-            this.Obfuscated.Name = "Obfuscated";
-            this.Obfuscated.Size = new System.Drawing.Size(35, 20);
-            this.Obfuscated.TabIndex = 22;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(141, 224);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(41, 12);
-            this.label19.TabIndex = 21;
-            this.label19.Text = "難読化";
             // 
             // JsonMake
             // 
