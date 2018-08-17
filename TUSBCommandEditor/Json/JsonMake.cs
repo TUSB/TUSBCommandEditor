@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
-namespace HaruCommandEditor.Json
+namespace TUSBCommandEditor.Json
 {
     public partial class JsonMake : Form
     {
@@ -20,7 +20,7 @@ namespace HaruCommandEditor.Json
         {
             InitializeComponent();
         }
-
+        
         private int StyleToNumber(bool? style)
         {
             return style == null ? 0 : (bool)style ? 1 : 2;
@@ -71,6 +71,7 @@ namespace HaruCommandEditor.Json
                 ColorList.Add("yellow", Color.FromArgb(255, 255, 85));
                 ColorList.Add("white", Color.FromArgb(255, 255, 255));
             }
+            ItemAllClear();
         }
 
         private void Preview_Show()
@@ -85,11 +86,11 @@ namespace HaruCommandEditor.Json
             {
                 var Item = JsonConvert.DeserializeObject<JsonData>(item.ToString());
                 string add_text = "";
-                if (Item.text != "")
+                if (Item.text != null)
                 {
                     add_text = Item.text;
                 }
-                else if (Item.selector != "")
+                else if (Item.selector != null)
                 {
                     add_text = $"[selector:{Item.selector}]";
                 }
@@ -114,29 +115,23 @@ namespace HaruCommandEditor.Json
                 if (Item.italic != null) italic = (bool)Item.italic;
                 if (Item.underlined != null) underlined = (bool)Item.underlined;
                 if (Item.strikethrough != null) strikethrough = (bool)Item.strikethrough;
-
-
-                Preview.Select(Preview.Text.Length, 0);
-                Font baseFont = Preview.SelectionFont;
+                
                 Preview.Text += add_text;
-                Preview.SelectionLength = add_text.Length;
-
+                Preview.Select(Preview.Text.Length - add_text.Length, add_text.Length);
                 Preview.SelectionColor = color;
-
-                FontStyle style = baseFont.Style;
+                FontStyle style = new FontStyle();
                 if (bold) style = style | FontStyle.Bold;
                 if (italic) style = style | FontStyle.Italic;
                 if (underlined) style = style | FontStyle.Underline;
                 if (strikethrough) style = style | FontStyle.Strikeout;
 
-                if (style != baseFont.Style)
+                if (style != new FontStyle())
                 {
-                    Font fnt = new Font(baseFont.FontFamily, baseFont.Size, style);
+                    Font fnt = new Font(Preview.Font.FontFamily, Preview.Font.Size, style);
                     Preview.SelectionFont = fnt;
                     fnt.Dispose();
                 }
-
-                baseFont.Dispose();
+                
             }
             Preview.Select(0, 0);
             return;
@@ -173,36 +168,40 @@ namespace HaruCommandEditor.Json
             }
             
             //装飾
-            if (ColorSelect.SelectedText != "未指定") { Item.color = ColorSelect.SelectedText; }
-            if (Bold.SelectedIndex > 0) { Item.bold = Bold.SelectedText == "T"; }
-            if (Italic.SelectedIndex > 0) { Item.italic = Italic.SelectedText == "T"; }
-            if (Underlined.SelectedIndex > 0) { Item.underlined = Underlined.SelectedText == "T"; }
-            if (Strikethrough.SelectedIndex > 0) { Item.strikethrough = Strikethrough.SelectedText == "T"; }
-            if (Obfuscated.SelectedIndex > 0) { Item.obfuscated = Obfuscated.SelectedText == "T"; }
+            if ((string)ColorSelect.SelectedItem != "未指定") { Item.color = (string)ColorSelect.SelectedItem; }
+            if (Bold.SelectedIndex > 0) { Item.bold = (string)Bold.SelectedItem == "T"; }
+            if (Italic.SelectedIndex > 0) { Item.italic = (string)Italic.SelectedItem == "T"; }
+            if (Underlined.SelectedIndex > 0) { Item.underlined = (string)Underlined.SelectedItem == "T"; }
+            if (Strikethrough.SelectedIndex > 0) { Item.strikethrough = (string)Strikethrough.SelectedItem == "T"; }
+            if (Obfuscated.SelectedIndex > 0) { Item.obfuscated = (string)Obfuscated.SelectedItem == "T"; }
 
             //click&hover
-            if (ClickAction.SelectedText != "使用しない")
+            if ((string)ClickAction.SelectedItem != "使用しない")
             {
-                Item.clickEvent.action = ClickAction.SelectedText;
-                Item.clickEvent.value = ClickValue.Text;
+                JsonData.ClickEvent clickEvent = new JsonData.ClickEvent();
+                clickEvent.action = (string)ClickAction.SelectedItem;
+                clickEvent.value = ClickValue.Text;
+                Item.clickEvent = clickEvent;
             }
-            if (HoverAction.SelectedText != "使用しない")
+            if ((string)HoverAction.SelectedItem != "使用しない")
             {
-                Item.hoverEvent.action = HoverAction.SelectedText;
-                Item.hoverEvent.value = HoverValue.Text;
+                JsonData.HoverEvent hoverEvent = new JsonData.HoverEvent();
+                hoverEvent.action = (string)HoverAction.SelectedItem;
+                hoverEvent.value = HoverValue.Text;
+                Item.hoverEvent = hoverEvent;
             }
-            ListJsonItems.Items.Add(JsonConvert.SerializeObject(Item));
+            ListJsonItems.Items.Add(JsonConvert.SerializeObject(Item, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
 
             Preview_Show();
         }
 
         private void ColorSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (ColorSelect.SelectedText)
+            switch ((string)ColorSelect.SelectedItem)
             {
                 case "未指定": ColorShow.BackColor = Color.FromName("Control"); break;
                 case "reset": ColorShow.BackColor = Color.FromName("Control"); break;
-                default: ColorShow.BackColor = ColorList[ColorSelect.SelectedText]; break;
+                default: ColorShow.BackColor = ColorList[(string)ColorSelect.SelectedItem]; break;
             }
         }
 
@@ -211,7 +210,7 @@ namespace HaruCommandEditor.Json
             try
             {
                 var with = JsonConvert.DeserializeObject<JsonData>(TranslateWith.Text);
-                TranslateWithList.Items.Add(JsonConvert.SerializeObject(with));
+                TranslateWithList.Items.Add(JsonConvert.SerializeObject(with, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
             }
             catch (Exception)
             {
