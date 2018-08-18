@@ -78,6 +78,7 @@ namespace TUSBCommandEditor.Json
         {
             Preview.Clear();
             Color color = Preview.ForeColor;
+            List<TextData> textdata = new List<TextData>();
             bool bold = false;
             bool italic = false;
             bool underlined = false;
@@ -115,23 +116,32 @@ namespace TUSBCommandEditor.Json
                 if (Item.italic != null) italic = (bool)Item.italic;
                 if (Item.underlined != null) underlined = (bool)Item.underlined;
                 if (Item.strikethrough != null) strikethrough = (bool)Item.strikethrough;
-                
-                Preview.Text += add_text;
-                Preview.Select(Preview.Text.Length - add_text.Length, add_text.Length);
-                Preview.SelectionColor = color;
+
                 FontStyle style = new FontStyle();
                 if (bold) style = style | FontStyle.Bold;
                 if (italic) style = style | FontStyle.Italic;
                 if (underlined) style = style | FontStyle.Underline;
                 if (strikethrough) style = style | FontStyle.Strikeout;
 
-                if (style != new FontStyle())
+                var data = new TextData();
+                data.Start = Preview.Text.Length;
+                data.Length = add_text.Length;
+                data.Color = color;
+                data.Style = style;
+                textdata.Add(data);
+
+                Preview.Text += add_text;
+            }
+            foreach(var data in textdata)
+            {
+                Preview.Select(data.Start, data.Length);
+                Preview.SelectionColor = data.Color;
+                if (data.Style != new FontStyle())
                 {
-                    Font fnt = new Font(Preview.Font.FontFamily, Preview.Font.Size, style);
+                    Font fnt = new Font(Preview.Font.FontFamily, Preview.Font.Size, data.Style);
                     Preview.SelectionFont = fnt;
                     fnt.Dispose();
                 }
-                
             }
             Preview.Select(0, 0);
             return;
@@ -395,4 +405,11 @@ namespace TUSBCommandEditor.Json
         public HoverEvent hoverEvent { get; set; }
     }
 
+    public class TextData
+    {
+        public int Start { get; set; }
+        public int Length { get; set; }
+        public Color Color { get; set; }
+        public FontStyle Style { get; set; }
+    }
 }

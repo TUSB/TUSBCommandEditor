@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>E:\ユーザー\tatuharu\OwnCloud\自作ソフト\ライブラリ\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\TUSBCommandEditor\bin\Debug\dll\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
