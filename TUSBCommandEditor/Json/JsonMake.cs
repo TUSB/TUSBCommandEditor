@@ -14,13 +14,31 @@ namespace TUSBCommandEditor.Json
     public partial class JsonMake : Form
     {
         private Dictionary<string, Color> ColorList = new Dictionary<string, Color>();
+        private string input = "";
         public string JSON = "";
-
-        public JsonMake()
+        
+        public JsonMake(string input = "")
         {
+            this.input = input;
             InitializeComponent();
         }
-        
+
+        /// <summary>
+        /// フォームを表示しJSON文字列を返す、OKされなかった場合にはnullを返すので注意
+        /// </summary>
+        /// <param name="input">あればJSON文字列(省略可)</param>
+        static public string ShowForm(string input = "")
+        {
+            JsonMake json = new JsonMake(input);
+            string ReturnValue = null;
+            if (json.ShowDialog() == DialogResult.OK)
+            {
+                ReturnValue = json.JSON;
+            }
+            json.Dispose();
+            return ReturnValue;
+        }
+
         private int StyleToNumber(bool? style)
         {
             return style == null ? 0 : (bool)style ? 1 : 2;
@@ -52,7 +70,7 @@ namespace TUSBCommandEditor.Json
         private void JsonMake_Load(object sender, EventArgs e)
         {
             JSON = "";
-            if (!ColorList.TryGetValue("black", out var tmp))
+            if (!ColorList.TryGetValue("black", out var dummy))
             {
                 ColorList.Add("black", Color.FromArgb(0, 0, 0));
                 ColorList.Add("dark_blue", Color.FromArgb(0, 0, 170));
@@ -72,6 +90,24 @@ namespace TUSBCommandEditor.Json
                 ColorList.Add("white", Color.FromArgb(255, 255, 255));
             }
             ItemAllClear();
+            if (input != "")
+            {
+                try
+                {
+                    var Item = JsonConvert.DeserializeObject<List<object>>(input);
+                    foreach(var tmp in Item)
+                    {
+                        if (tmp is Newtonsoft.Json.Linq.JObject)
+                        {
+                            ListJsonItems.Items.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<JsonData>(tmp.ToString()), new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("読み込めませんでした", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
 
         private void Preview_Show()
@@ -85,7 +121,7 @@ namespace TUSBCommandEditor.Json
             bool strikethrough = false;
             foreach (var item in ListJsonItems.Items)
             {
-                var Item = JsonConvert.DeserializeObject<JsonData>(item.ToString());
+                var Item = JsonConvert.DeserializeObject<JsonData>((string)item);
                 string add_text = "";
                 if (Item.text != null)
                 {
@@ -353,22 +389,45 @@ namespace TUSBCommandEditor.Json
                 Underlined.SelectedIndex = StyleToNumber(Item.underlined);
                 Strikethrough.SelectedIndex = StyleToNumber(Item.strikethrough);
                 Obfuscated.SelectedIndex = StyleToNumber(Item.obfuscated);
-                switch (Item.clickEvent.action)
+                if (Item.clickEvent != null)
                 {
-                    case "open_url": ClickAction.SelectedIndex = 1; break;
-                    case "run_command": ClickAction.SelectedIndex = 2; break;
-                    case "change_page": ClickAction.SelectedIndex = 3; break;
-                    case "suggest_command": ClickAction.SelectedIndex = 4; break;
+                    switch (Item.clickEvent.action)
+                    {
+                        case "open_url": ClickAction.SelectedIndex = 1; break;
+                        case "run_command": ClickAction.SelectedIndex = 2; break;
+                        case "change_page": ClickAction.SelectedIndex = 3; break;
+                        case "suggest_command": ClickAction.SelectedIndex = 4; break;
+                    }
+                    ClickValue.Text = Item.clickEvent.value ?? "";
                 }
-                ClickValue.Text = Item.clickEvent.value ?? "";
-                switch (Item.hoverEvent.action)
+                if (Item.hoverEvent != null)
                 {
-                    case "show_text": HoverAction.SelectedIndex = 1; break;
-                    case "show_item": HoverAction.SelectedIndex = 2; break;
-                    case "show_entity": HoverAction.SelectedIndex = 3; break;
+                    switch (Item.hoverEvent.action)
+                    {
+                        case "show_text": HoverAction.SelectedIndex = 1; break;
+                        case "show_item": HoverAction.SelectedIndex = 2; break;
+                        case "show_entity": HoverAction.SelectedIndex = 3; break;
+                    }
+                    HoverValue.Text = Item.hoverEvent.value ?? "";
                 }
-                HoverValue.Text = Item.hoverEvent.value ?? "";
+                ListJsonItems.Items.RemoveAt(ListJsonItems.SelectedIndex);
             }
+        }
+
+        private void OK_Click(object sender, EventArgs e)
+        {  
+            List<string> item = new List<string>();
+            foreach(var tmp in ListJsonItems.Items)
+            {
+                item.Add((string)tmp);
+            }
+            JSON = $"[\"\",{string.Join(",", item)}]";
+            DialogResult = DialogResult.OK;
+        }
+
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 

@@ -120,7 +120,7 @@
             this.Preview.Enabled = false;
             this.Preview.Location = new System.Drawing.Point(6, 18);
             this.Preview.Name = "Preview";
-            this.Preview.Size = new System.Drawing.Size(316, 104);
+            this.Preview.Size = new System.Drawing.Size(316, 133);
             this.Preview.TabIndex = 0;
             this.Preview.Text = "";
             // 
@@ -129,16 +129,16 @@
             this.groupBox1.Controls.Add(this.PreviewResetColor);
             this.groupBox1.Controls.Add(this.PreviewBGColor);
             this.groupBox1.Controls.Add(this.Preview);
-            this.groupBox1.Location = new System.Drawing.Point(379, 286);
+            this.groupBox1.Location = new System.Drawing.Point(379, 241);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(409, 128);
+            this.groupBox1.Size = new System.Drawing.Size(409, 157);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "プレビュー";
             // 
             // PreviewResetColor
             // 
-            this.PreviewResetColor.Location = new System.Drawing.Point(328, 70);
+            this.PreviewResetColor.Location = new System.Drawing.Point(328, 97);
             this.PreviewResetColor.Name = "PreviewResetColor";
             this.PreviewResetColor.Size = new System.Drawing.Size(75, 23);
             this.PreviewResetColor.TabIndex = 2;
@@ -148,7 +148,7 @@
             // 
             // PreviewBGColor
             // 
-            this.PreviewBGColor.Location = new System.Drawing.Point(328, 99);
+            this.PreviewBGColor.Location = new System.Drawing.Point(328, 126);
             this.PreviewBGColor.Name = "PreviewBGColor";
             this.PreviewBGColor.Size = new System.Drawing.Size(75, 23);
             this.PreviewBGColor.TabIndex = 1;
@@ -783,7 +783,7 @@
             this.groupBox3.Controls.Add(this.ListJsonItems);
             this.groupBox3.Location = new System.Drawing.Point(379, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(409, 268);
+            this.groupBox3.Size = new System.Drawing.Size(409, 223);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "追加済みの要素一覧";
@@ -792,7 +792,7 @@
             // 
             this.ListClear.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ListClear.ForeColor = System.Drawing.Color.Maroon;
-            this.ListClear.Location = new System.Drawing.Point(328, 239);
+            this.ListClear.Location = new System.Drawing.Point(328, 194);
             this.ListClear.Name = "ListClear";
             this.ListClear.Size = new System.Drawing.Size(75, 23);
             this.ListClear.TabIndex = 6;
@@ -802,7 +802,7 @@
             // 
             // ListResetting
             // 
-            this.ListResetting.Location = new System.Drawing.Point(328, 150);
+            this.ListResetting.Location = new System.Drawing.Point(328, 111);
             this.ListResetting.Name = "ListResetting";
             this.ListResetting.Size = new System.Drawing.Size(75, 23);
             this.ListResetting.TabIndex = 4;
@@ -812,7 +812,7 @@
             // 
             // ListRemove
             // 
-            this.ListRemove.Location = new System.Drawing.Point(328, 179);
+            this.ListRemove.Location = new System.Drawing.Point(328, 140);
             this.ListRemove.Name = "ListRemove";
             this.ListRemove.Size = new System.Drawing.Size(75, 23);
             this.ListRemove.TabIndex = 3;
@@ -849,26 +849,28 @@
             this.ListJsonItems.ItemHeight = 12;
             this.ListJsonItems.Location = new System.Drawing.Point(6, 18);
             this.ListJsonItems.Name = "ListJsonItems";
-            this.ListJsonItems.Size = new System.Drawing.Size(316, 244);
+            this.ListJsonItems.Size = new System.Drawing.Size(316, 196);
             this.ListJsonItems.TabIndex = 0;
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(713, 420);
+            this.OK.Location = new System.Drawing.Point(677, 404);
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(75, 23);
+            this.OK.Size = new System.Drawing.Size(111, 34);
             this.OK.TabIndex = 4;
             this.OK.Text = "完了";
             this.OK.UseVisualStyleBackColor = true;
+            this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(596, 420);
+            this.Cancel.Location = new System.Drawing.Point(560, 404);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(75, 23);
+            this.Cancel.Size = new System.Drawing.Size(111, 34);
             this.Cancel.TabIndex = 5;
             this.Cancel.Text = "キャンセル";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // JsonMake
             // 

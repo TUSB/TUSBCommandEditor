@@ -19,8 +19,6 @@ namespace TUSBCommandEditor.Main
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Json.JsonMake json = new Json.JsonMake();
-            json.ShowDialog();
             Common.Version.Update();
         }
     }
