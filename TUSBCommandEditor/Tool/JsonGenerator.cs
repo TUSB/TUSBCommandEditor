@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
-namespace TUSBCommandEditor.Json
+namespace TUSBCommandEditor.Tool
 {
-    public partial class JsonMake : Form
+    public partial class JsonGenerator : Form
     {
         private Dictionary<string, Color> ColorList = new Dictionary<string, Color>();
         private string input = "";
         public string JSON = "";
         
-        public JsonMake(string input = "")
+        public JsonGenerator(string input = "")
         {
             this.input = input;
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace TUSBCommandEditor.Json
         /// <param name="input">あればJSON文字列(省略可)</param>
         static public string ShowForm(string input = "")
         {
-            JsonMake json = new JsonMake(input);
+            JsonGenerator json = new JsonGenerator(input);
             string ReturnValue = null;
             if (json.ShowDialog() == DialogResult.OK)
             {

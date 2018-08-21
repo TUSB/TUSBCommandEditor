@@ -19,7 +19,7 @@ namespace TUSBCommandEditor.Summon
 
         private void EntityNameGenerate_Click(object sender, EventArgs e)
         {
-            string json = Json.JsonMake.ShowForm(EntityName.Text);
+            string json = Tool.JsonGenerator.ShowForm(EntityName.Text);
             if (json != null) { EntityName.Text = json; }
         }
     }
