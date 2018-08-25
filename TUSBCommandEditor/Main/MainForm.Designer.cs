@@ -32,13 +32,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.プラグインToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ツールToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.編集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.タブを追加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -47,16 +44,21 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.giveを追加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.summonを追加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setBlockを追加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.プラグインToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ツールToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.編集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TabRemoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AllTabRemoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SummonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -93,6 +95,14 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "コマンド管理";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(270, 31);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(724, 613);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(8, 652);
@@ -100,53 +110,29 @@
             this.textBox1.Size = new System.Drawing.Size(905, 19);
             this.textBox1.TabIndex = 2;
             // 
-            // ヘルプToolStripMenuItem
+            // treeView1
             // 
-            this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.ヘルプToolStripMenuItem.Text = "ヘルプ(&H)";
+            this.treeView1.Location = new System.Drawing.Point(6, 31);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(258, 615);
+            this.treeView1.TabIndex = 1;
             // 
-            // プラグインToolStripMenuItem
+            // toolStrip1
             // 
-            this.プラグインToolStripMenuItem.Name = "プラグインToolStripMenuItem";
-            this.プラグインToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.プラグインToolStripMenuItem.Text = "プラグイン(&P)";
-            // 
-            // ツールToolStripMenuItem
-            // 
-            this.ツールToolStripMenuItem.Name = "ツールToolStripMenuItem";
-            this.ツールToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.ツールToolStripMenuItem.Text = "ツール(&T)";
-            // 
-            // 編集ToolStripMenuItem
-            // 
-            this.編集ToolStripMenuItem.Name = "編集ToolStripMenuItem";
-            this.編集ToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.編集ToolStripMenuItem.Text = "編集(&E)";
-            // 
-            // タブを追加ToolStripMenuItem
-            // 
-            this.タブを追加ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.giveを追加ToolStripMenuItem,
-            this.summonを追加ToolStripMenuItem,
-            this.setBlockを追加ToolStripMenuItem});
-            this.タブを追加ToolStripMenuItem.Name = "タブを追加ToolStripMenuItem";
-            this.タブを追加ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.タブを追加ToolStripMenuItem.Text = "ファイル(&F)";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.タブを追加ToolStripMenuItem,
-            this.編集ToolStripMenuItem,
-            this.ツールToolStripMenuItem,
-            this.プラグインToolStripMenuItem,
-            this.ヘルプToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripSeparator1,
+            this.toolStripButton4,
+            this.toolStripSeparator3,
+            this.toolStripButton5,
+            this.toolStripButton6});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(994, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripButton1
             // 
@@ -212,55 +198,91 @@
             this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton6.Text = "toolStripButton6";
             // 
-            // toolStrip1
+            // ヘルプToolStripMenuItem
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.toolStripSeparator1,
-            this.toolStripButton4,
-            this.toolStripSeparator3,
-            this.toolStripButton5,
-            this.toolStripButton6});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(994, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.ヘルプToolStripMenuItem.Text = "ヘルプ(&H)";
             // 
-            // richTextBox1
+            // プラグインToolStripMenuItem
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(270, 31);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(724, 613);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
+            this.プラグインToolStripMenuItem.Name = "プラグインToolStripMenuItem";
+            this.プラグインToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.プラグインToolStripMenuItem.Text = "プラグイン(&P)";
             // 
-            // treeView1
+            // ツールToolStripMenuItem
             // 
-            this.treeView1.Location = new System.Drawing.Point(6, 31);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(258, 615);
-            this.treeView1.TabIndex = 1;
+            this.ツールToolStripMenuItem.Name = "ツールToolStripMenuItem";
+            this.ツールToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.ツールToolStripMenuItem.Text = "ツール(&T)";
             // 
-            // giveを追加ToolStripMenuItem
+            // 編集ToolStripMenuItem
             // 
-            this.giveを追加ToolStripMenuItem.Name = "giveを追加ToolStripMenuItem";
-            this.giveを追加ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.giveを追加ToolStripMenuItem.Text = "Giveを追加";
+            this.編集ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TabRemoveToolStripMenuItem,
+            this.AllTabRemoveToolStripMenuItem});
+            this.編集ToolStripMenuItem.Name = "編集ToolStripMenuItem";
+            this.編集ToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.編集ToolStripMenuItem.Text = "編集(&E)";
             // 
-            // summonを追加ToolStripMenuItem
+            // TabRemoveToolStripMenuItem
             // 
-            this.summonを追加ToolStripMenuItem.Name = "summonを追加ToolStripMenuItem";
-            this.summonを追加ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.summonを追加ToolStripMenuItem.Text = "Summonを追加";
+            this.TabRemoveToolStripMenuItem.Name = "TabRemoveToolStripMenuItem";
+            this.TabRemoveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.TabRemoveToolStripMenuItem.Text = "タブを削除";
+            this.TabRemoveToolStripMenuItem.Click += new System.EventHandler(this.TabRemoveToolStripMenuItem_Click);
             // 
-            // setBlockを追加ToolStripMenuItem
+            // AllTabRemoveToolStripMenuItem
             // 
-            this.setBlockを追加ToolStripMenuItem.Name = "setBlockを追加ToolStripMenuItem";
-            this.setBlockを追加ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.setBlockを追加ToolStripMenuItem.Text = "SetBlockを追加";
+            this.AllTabRemoveToolStripMenuItem.Name = "AllTabRemoveToolStripMenuItem";
+            this.AllTabRemoveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AllTabRemoveToolStripMenuItem.Text = "全てのタブを削除";
+            this.AllTabRemoveToolStripMenuItem.Click += new System.EventHandler(this.AllTabCloseToolStripMenuItem_Click);
+            // 
+            // ファイルToolStripMenuItem
+            // 
+            this.ファイルToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.GiveToolStripMenuItem,
+            this.SummonToolStripMenuItem,
+            this.SetBlockToolStripMenuItem});
+            this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
+            this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ファイルToolStripMenuItem.Text = "ファイル(&F)";
+            // 
+            // GiveToolStripMenuItem
+            // 
+            this.GiveToolStripMenuItem.Name = "GiveToolStripMenuItem";
+            this.GiveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.GiveToolStripMenuItem.Text = "Giveを追加";
+            this.GiveToolStripMenuItem.Click += new System.EventHandler(this.GiveToolStripMenuItem_Click);
+            // 
+            // SummonToolStripMenuItem
+            // 
+            this.SummonToolStripMenuItem.Name = "SummonToolStripMenuItem";
+            this.SummonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SummonToolStripMenuItem.Text = "Summonを追加";
+            this.SummonToolStripMenuItem.Click += new System.EventHandler(this.SummonToolStripMenuItem_Click);
+            // 
+            // SetBlockToolStripMenuItem
+            // 
+            this.SetBlockToolStripMenuItem.Name = "SetBlockToolStripMenuItem";
+            this.SetBlockToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SetBlockToolStripMenuItem.Text = "SetBlockを追加";
+            this.SetBlockToolStripMenuItem.Click += new System.EventHandler(this.SetBlockToolStripMenuItem_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ファイルToolStripMenuItem,
+            this.編集ToolStripMenuItem,
+            this.ツールToolStripMenuItem,
+            this.プラグインToolStripMenuItem,
+            this.ヘルプToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // MainForm
             // 
@@ -276,10 +298,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,7 +316,7 @@
         private System.Windows.Forms.ToolStripMenuItem プラグインToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ツールToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 編集ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem タブを追加ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ファイルToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TreeView treeView1;
@@ -307,8 +329,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripMenuItem giveを追加ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem summonを追加ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setBlockを追加ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem GiveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SummonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SetBlockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TabRemoveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AllTabRemoveToolStripMenuItem;
     }
 }
