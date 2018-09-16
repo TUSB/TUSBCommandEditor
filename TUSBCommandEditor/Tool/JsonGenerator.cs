@@ -102,10 +102,19 @@ namespace TUSBCommandEditor.Tool
                             ListJsonItems.Items.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<JsonData>(tmp.ToString()), new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                         }
                     }
+                    Preview_Show();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("読み込めませんでした", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    try
+                    {
+                        var Item = JsonConvert.DeserializeObject<JsonData>(input);
+                        ListJsonItems.Items.Add(JsonConvert.SerializeObject(Item, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("読み込めませんでした", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }
@@ -415,13 +424,17 @@ namespace TUSBCommandEditor.Tool
         }
 
         private void OK_Click(object sender, EventArgs e)
-        {  
+        {
             List<string> item = new List<string>();
-            foreach(var tmp in ListJsonItems.Items)
+            foreach (var tmp in ListJsonItems.Items)
             {
                 item.Add((string)tmp);
             }
-            JSON = $"[\"\",{string.Join(",", item)}]";
+            switch (item.Count) {
+                case 0: JSON = ""; break;
+                case 1: JSON = item[0]; break;
+                default: JSON = $"[\"\",{string.Join(",", item)}]"; break;
+        }
             DialogResult = DialogResult.OK;
         }
 
